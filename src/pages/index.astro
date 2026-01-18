@@ -6,63 +6,170 @@ import { buttonVariants } from '@/components/ui/button'
 import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getRecentPosts } from '@/lib/data-utils'
+import PostItem from '../components/PostItem.astro';
+import { Icon } from 'astro-icon/components'
 
 const blog = await getRecentPosts(SITE.featuredPostCount)
+import type { CollectionEntry } from 'astro:content';
+type BlogPost = CollectionEntry<'blog'>;
+
+import image1 from '../assets/img/scorecard.webp';
+import image2 from "../assets/img/linechart.webp";
+import image3 from "../assets/img/social_media_planner2.png";
+
 ---
 
 <Layout class="max-w-3xl">
   <PageHead slot="head" title="Home" />
   <section>
-    <div class="rounded-lg border">
-      <div class="flex flex-col space-y-1.5 p-6">
-        <h3 class="text-3xl leading-none font-medium">er·u·dite</h3>
-        <p class="text-muted-foreground text-sm">
-          /ˈer(y)əˌdīt/ &bull; <span class="font-medium">adjective</span>
-        </p>
+      
+      <div class="min-w-full">
+        
+        <div class="prose prose-neutral mb-2 dark:prose-invert">
+          
+          <h1 class="underline font-semibold">Introducing Goodchart 👋</h1>
+          
+          <p class="">
+            Goodchart is an free chart library built in <Link
+            href="https://excel.cloud.microsoft"
+            class="text-foreground"
+            external
+            underline>Microsoft Excel</Link
+          >. Established in 2025 by the creator <Link
+            href="https://vincentwidyan-linkinbio.vercel.app"
+            class="text-foreground"
+            external
+            underline>vincentwidyan</Link
+          > and keeps improving and adding its components. All components are free for personal and organizational purposes but limited for any commercial purposes. 
+          </p>
+          <div class="flex gap-3">
+          <Link
+            href="https://vincentwidyan.gumroad.com/"
+            aria-label='twitter'
+            title='Download'
+            class={buttonVariants({ variant: 'default', size: 'default' })}
+            external
+          > Download Now
+          <Link
+            href="https://vincentwidyan.gumroad.com/"
+            aria-label='twitter'
+            title='Download'
+            class={buttonVariants({ variant: 'outline', size: 'default' })}
+            external
+          > Learn More
+          </div>
+        </div>
+        <br>
+          
+    
+        <h4 class="text-1xl font-medium">✲ Components</h4>
+        <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+      
+        </a>
+          <a 
+          href="https://vincentwidyan.gumroad.com/l/exqeq"
+          class="group relative flex flex-col overflow-hidden rounded-xl border bg-card hover:bg-accent/10 transition-all duration-300"
+        >
+          <div class="invisible !h-0">
+      
+      ### Score Card
+      
+          </div>
+          <div class="aspect-[5/3] overflow-hidden">
+            <img
+              src={image1.src}
+              alt="Area Charts built in Excel"
+              class="hx-absolute object-auto items-center transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex flex-col p-4">
+            <h3 class="text-xl font-medium tracking-tight mb-1" id="day-0">Score Card</h3>
+            <p class="text-sm text-muted-foreground">For Dashboard and Report</p>
+            <div class="absolute bottom-4 right-4 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </div>
+          </div>
+      
+        </a>
+
+        <!-- Divider for each dashboard -->
+
+        <a 
+          href="https://vincentwidyan.gumroad.com/l/ghgro"
+          class="group relative flex flex-col overflow-hidden rounded-xl border bg-card hover:bg-accent/10 transition-all duration-300"
+        >
+          <div class="invisible !h-0">
+      
+      ### Line Chart
+      
+          </div>
+          <div class="aspect-[5/3] overflow-hidden">
+            <img
+              src={image2.src}
+              alt="Bar Chart built in Excel"
+              class="hx-absolute object-auto item-center transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex flex-col p-4">
+            <h3 class="text-xl font-medium tracking-tight mb-1" id="day-0">Line Chart</h3>
+            <p class="text-sm text-muted-foreground">For Dashboard and Report</p>
+            <div class="absolute bottom-4 right-4 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </div>
+          </div>
+      
+        </a>
+      
+    
       </div>
-      <div class="p-6 pt-0">
-        <p class="text-muted-foreground mb-2 text-sm">
-          astro-erudite is an opinionated, unstyled static blogging template
-          built with <Link
-            href="https://astro.build"
-            class="text-foreground"
-            external
-            underline>Astro</Link
-          >, <Link
-            href="https://tailwindcss.com"
-            class="text-foreground"
-            external
-            underline>Tailwind</Link
-          >, and <Link
-            href="https://ui.shadcn.com"
-            class="text-foreground"
-            external
-            underline>shadcn/ui</Link
-          >. Extraordinarily loosely based on the <Link
-            href="https://astro-micro.vercel.app/"
-            class="text-foreground"
-            external
-            underline>Astro Micro</Link
-          > theme.
-        </p>
-        <p class="text-muted-foreground text-sm">
-          To use this template, check out the <Link
-            href="https://github.com/jktrn/astro-erudite"
-            class="text-foreground"
-            underline
-            external>GitHub</Link
-          > repository. To learn more about why this template exists, read this blog
-          post: <Link
-            href="/blog/the-state-of-static-blogs"
-            class="text-foreground"
-            underline>The State of Static Blogs in 2024</Link
-          >.
-        </p>
+      <h4 class="text-1xl font-medium mt-5">✲ Templates</h4>
+      <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+        </a>
+          <a 
+          href="https://vincentwidyan.gumroad.com/"
+          class="group relative flex flex-col overflow-hidden rounded-xl border bg-card hover:bg-accent/10 transition-all duration-300"
+        >
+          <div class="invisible !h-0">
+      
+      ### Social Media Planner
+      
+          </div>
+          <div class="aspect-[5/3] overflow-hidden">
+            <img
+              src={image3.src}
+              alt="Area Charts built in Excel"
+              class="hx-absolute object-auto items-center transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+          <div class="flex flex-col p-4">
+            <h3 class="text-xl font-medium tracking-tight mb-1" id="day-0">Social Media Planner</h3>
+            <p class="text-sm text-muted-foreground">For Managing and Scheduling Content</p>
+            <div class="absolute bottom-4 right-4 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </div>
+          </div>
+      
+        </a>
       </div>
-    </div>
-  </section>
+    </section>
+
+  <div class='mt-6 mb-12'>
+        <div class="flex justify-between gap-2 border-b mb-1 dark:border-b-zinc-700">
+          <h2 class="text-2xl font-medium">Recent Posts</h2>
+          <a href="/blog/" class="inline-block py-2 underline dark:prose-invert">All posts &raquo;</a>
+        </div>
+        <div>
+          {
+            blog.map((post: BlogPost) => (
+              <PostItem post={post} />
+            ))
+          }      
+        </div>
+        <div class="text-right">
+        </div>
+      </div>
   <section class="flex flex-col gap-y-4">
-    <h2 class="text-2xl font-medium">Latest posts</h2>
+    <h2 class="text-2xl font-medium">Featured Posts</h2>
     <ul class="flex flex-col gap-y-4">
       {
         blog.map((post) => (
@@ -77,7 +184,7 @@ const blog = await getRecentPosts(SITE.featuredPostCount)
         href="/blog"
         class={buttonVariants({ variant: 'ghost' }) + ' group'}
       >
-        See all posts <span
+        See all featured posts <span
           class="ml-1.5 transition-transform group-hover:translate-x-1"
           >&rarr;</span
         >

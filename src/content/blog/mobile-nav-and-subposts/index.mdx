@@ -4,15 +4,51 @@ description: 'This new version introduces improved mobile navigation (via sticky
 date: 2025-05-21
 tags: ['v1.6.0']
 image: './banner.png'
-authors: ['enscribe']
+draft: true
 ---
+import Callout from '@/components/Callout.astro'
+import { Icon } from 'astro-icon/components'
 
 ## Two major improvements to the reading experience
+
 
 astro-erudite's v1.6.0 brings about two significant enhancements that I've been wanting to implement for quite some time! The first addresses a longstanding mobile <abbr title="User Experience">UX</abbr> issue, while the second introduces a content organization paradigm that I find interesting.
 
 ### Mobile navigation
 
+1. Import the component into your MDX file:
+
+   ```js
+   import { Steps } from '@astrojs/starlight/components';
+   ```
+
+2. Wrap `<Steps>` around your ordered list items.
+   ```js
+   this is blockout
+   ```
+   this is the remaining
+  <Callout title="About Github-flavored alerts" variant="important">
+  I know that Github typically uses the following syntax for "alerts" (which is what they call these callouts, you can see their documentation [here](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)):
+  ```md showLineNumbers=false
+  > [!NOTE]
+  > Useful information that users should know, even when skimming content.
+  ```
+  The above syntax is supposed to render like this:
+  <Callout>
+    Useful information that users should know, even when skimming content.
+  </Callout>
+  I believe they do this so they can keep you within the Markdown-like syntax system. However, since this is MDX, I thought we'd be better off just using the component paradigm since it's a bit impractical to make a rehype plugin that can parse this form of syntax (also, solutions for this already exist, such as [lin-stephanie/rehype-callouts](https://github.com/lin-stephanie/rehype-callouts)). Additionally, I find it a pain to work with the `>{:md}` (the `<blockquote>{:html}` indicators for Markdown) syntax, as it makes it difficult to nest things such as code blocks within them in pure Markdown. We'll use components for now!
+  </Callout>
+
+| Prop | Description | Default |
+| ---- | ----------- | ------- |
+| `title` | The title of the callout | `undefined{:js}` |
+| `variant` | The variant of the callout | `"note"{:js}` |
+| `defaultOpen` | Whether the callout `<details>{:html}` box is open by default | `true{:js}` |'
+  ```md
+  > [!NOTE]
+  > Useful information that users should know, even when skimming content.
+  ```
 The original table of contents implementation was frankly inadequate for mobile users. While desktop users enjoyed a beautiful sticky sidebar with scroll-aware highlighting, mobile users were stuck with a basic collapsible `<details>{:html}` element that provided no indication of reading progress or current location within the post:
 
 <div class="max-w-xs mx-auto">

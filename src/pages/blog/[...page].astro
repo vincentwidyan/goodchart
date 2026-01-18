@@ -7,6 +7,8 @@ import { SITE } from '@/consts'
 import Layout from '@/layouts/Layout.astro'
 import { getAllPosts, groupPostsByYear } from '@/lib/data-utils'
 import type { PaginateFunction } from 'astro'
+import PostsByYear from '../../components/PostsByYear.astro';
+import PostItem from '../../components/PostItem.astro';
 
 export async function getStaticPaths({
   paginate,
@@ -31,16 +33,16 @@ const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
       { label: `Page ${page.currentPage}`, icon: 'lucide:book-copy' },
     ]}
   />
-
+  
   <div class="flex min-h-[calc(100vh-18rem)] flex-col gap-y-8">
     {
       years.map((year) => (
         <section class="flex flex-col gap-y-4">
           <div class="font-medium">{year}</div>
-          <ul class="flex flex-col gap-4">
+          <ul class="flex flex-col">
             {postsByYear[year].map((post) => (
               <li>
-                <BlogCard entry={post} />
+                <PostItem post={post}/>
               </li>
             ))}
           </ul>

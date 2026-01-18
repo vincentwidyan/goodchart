@@ -1,0 +1,62 @@
+---
+import { processSteps } from './rehype-steps';
+
+const content = await Astro.slots.render('default');
+const { html } = processSteps(content);
+const { children } = Astro.props;
+---
+
+<Fragment set:html={html} />
+
+<style>
+.steps {
+  counter-reset: step-counter;
+  list-style: none;
+  padding-left: 0;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.steps > li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Circle number */
+.steps > li::before {
+  content: counter(step-counter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: #333;
+  color: #505050;
+  font-size: 0.875rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  z-index: 2;
+  border: 2px solid #2c2c2c; /* tailwind gray-200 */
+}
+
+/* Vertical line */
+.steps > li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 1.75rem;
+  left: 0.875rem; /* center of bullet */
+  width: 10px;
+  height: calc(100% - 1.75rem + 2.5rem); /* Extend to next item */
+  background-color: #444444; /* tailwind gray-200 */
+  z-index: 1;
+}
+
+</style>
+<ol class="steps">
+  {children}
+</ol>
