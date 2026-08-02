@@ -173,13 +173,13 @@ import image4 from "../assets/img/budget_and_expense_tracker.png";
             </div>
           </div>
         </a>
-
+        
         
 
       </div>
     </section>
 
-  <div class='mt-6 mb-12'>
+  <div class='mt-6 mb-4'>
         <div class="flex justify-between gap-2 border-b mb-1 dark:border-b-zinc-700">
           <h2 class="text-2xl font-medium">Recent Posts</h2>
           <a href="/blog/" class="inline-block py-2 underline dark:prose-invert">All posts &raquo;</a>
@@ -194,6 +194,18 @@ import image4 from "../assets/img/budget_and_expense_tracker.png";
         <div class="text-right">
         </div>
       </div>
+  <div class="flex justify-center">
+      <Link
+        href="/blog"
+        class={buttonVariants({ variant: 'ghost' }) + ' group'}
+      >
+        See all featured posts <span
+          class="ml-1.5 transition-transform group-hover:translate-x-1"
+          >&rarr;</span
+        >
+      </Link>
+    </div>
+    <!--
   <section class="flex flex-col gap-y-4">
     <h2 class="text-2xl font-medium">Featured Posts</h2>
     <ul class="flex flex-col gap-y-4">
@@ -217,4 +229,5 @@ import image4 from "../assets/img/budget_and_expense_tracker.png";
       </Link>
     </div>
   </section>
+  -->
 </Layout>

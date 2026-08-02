@@ -40,7 +40,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Twitter',
   },
   {
-    href: 'vincentwidyan@gmail.com',
+    href: 'goodchart99@gmail.com',
     label: 'Email',
   },
   {
